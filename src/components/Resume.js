@@ -18,6 +18,7 @@ class Resume extends React.Component {
             <thead>
                 <tr  style={{backgroundColor:'grey',color:'white'}} >
                   <th>User</th>
+                  <th>Avatar</th>
                   <th> Asked</th>
                   <th>Answered</th>
                   <th>Score</th>
@@ -26,6 +27,7 @@ class Resume extends React.Component {
                 <tbody>
                     <tr style={{backgroundColor:'aqua'}}>
                         <td>{user.name}</td>
+                        <td><img src={user.avatarURL} style={{height:'35px',margin:'10px'}}/></td>
                         <td>{numberOfAsked}</td>
                         <td>{numberOfAnswered}</td>
                         <td>{numberOfAnswered + numberOfAsked}</td>
