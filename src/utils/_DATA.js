@@ -149,6 +149,7 @@ function formatQuestion({optionOneText, optionTwoText, author}) {
 }
 
 
+
 function formatUser({username, name, avatarURL}) {
     return {
         id: username,

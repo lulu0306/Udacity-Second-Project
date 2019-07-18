@@ -20,7 +20,7 @@ class NavBar extends Component {
     }
 
     render() {
-        const {user} = this.props
+        const {authedUser} = this.props
         const {redirectLogin} = this.state
 
         if (redirectLogin === true) {
@@ -39,12 +39,12 @@ class NavBar extends Component {
                             <NavLink  to="/leaderboard"  style={{marginRight:'30px',textDecoration:'none'}}>Leaderboard</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink  to="/add"  style={{marginRight:'30px',textDecoration:'none'}}>Add Question</NavLink>
+                            <NavLink  to="/add"  style={{marginRight:'30px',textDecoration:'none'}}>New Question</NavLink>
                         </NavItem>
-                        <NavItem  style={{marginRight:'30px'}}> Hi ,{user.name}</NavItem>
+                        
                         <NavItem>
                             <NavLink  to="#"
-                                              onClick={this.handleSignout}  style={{marginRight:'30px',textDecoration:'none'}}>Signout</NavLink>
+                             onClick={this.handleSignout}  style={{marginRight:'30px',textDecoration:'none'}}>Signout</NavLink>
                         </NavItem>
                     </Nav>
                 </Navbar>
@@ -54,9 +54,9 @@ class NavBar extends Component {
     }
 }
 
-function mapStateToProps({authedUser, users}) {
+function mapStateToProps({authedUser}) {
     return {
-        user: users[authedUser]
+       authedUser
     }
 }
 

@@ -2,14 +2,13 @@ import React, {Fragment} from 'react'
 import {Redirect, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {Container, Row} from 'reactstrap'
-import {isEmpty} from "../utils/helpers";
 import NavBar from './NavBar'
 
 
-const PrivateRoute = ({component: Component, isAuthenticated, ...rest}) => (
+const PrivateRoute = ({component: Component, isSignedIn, ...rest}) => (
     <Route {...rest} render={(props) => {
         return (
-            isAuthenticated
+            isSignedIn
                 ?
                 <Fragment>
                     <NavBar/>
@@ -29,7 +28,7 @@ const PrivateRoute = ({component: Component, isAuthenticated, ...rest}) => (
 
 function mapStateToProps({authedUser}) {
     return {
-        isAuthenticated: !isEmpty(authedUser)
+        isSignedIn: authedUser !== null
     }
 }
 

@@ -11,7 +11,7 @@ import {connect} from 'react-redux'
 import {handleInitialData} from "../actions/shared"
 import Leaderboard from "./Leaderboard"
 import Question from './Question'
-import {isEmpty} from "../utils/helpers";
+
 
 class App extends Component {
     componentDidMount() {
@@ -38,9 +38,9 @@ class App extends Component {
     }
 }
 
-function mapStateToProps({questions, users}) {
+function mapStateToProps({authedUser}) {
     return {
-        loading: isEmpty(questions) || isEmpty(users)
+        loading: authedUser === null
    }
 }
 export default connect(mapStateToProps)(App);
