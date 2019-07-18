@@ -3,6 +3,7 @@ import {Redirect, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {Container, Row} from 'reactstrap'
 import NavBar from './NavBar'
+import {isEmpty} from '../utils/api'
 
 
 const PrivateRoute = ({component: Component, isSignedIn, ...rest}) => (
@@ -28,7 +29,7 @@ const PrivateRoute = ({component: Component, isSignedIn, ...rest}) => (
 
 function mapStateToProps({authedUser}) {
     return {
-        isSignedIn: authedUser !== null
+        isSignedIn: !isEmpty(authedUser)
     }
 }
 

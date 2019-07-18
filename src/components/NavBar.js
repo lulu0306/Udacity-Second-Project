@@ -5,11 +5,15 @@ import {connect} from 'react-redux'
 import {Nav, Navbar,  NavItem } from 'reactstrap'
 import {LogOut} from "../actions/authedUser"
 
+
+
 class NavBar extends Component {
     state = {
         redirectLogin: false
     }
 
+ 
+    
 
     handleSignout = (e) => {
         e.preventDefault()
@@ -20,8 +24,8 @@ class NavBar extends Component {
     }
 
     render() {
-        const {authedUser} = this.props
         const {redirectLogin} = this.state
+        const {authedUser} = this.props
 
         if (redirectLogin === true) {
             return (<Redirect to="/login"/>)
@@ -30,7 +34,6 @@ class NavBar extends Component {
         return (
             <Fragment>
                 <Navbar style={{backgroundColor:'aqua'}}>
-                   
                     <Nav>
                         <NavItem>
                             <NavLink  exact to="/" style={{marginRight:'30px',textDecoration:'none'}}>Dashboard</NavLink>
@@ -40,8 +43,8 @@ class NavBar extends Component {
                         </NavItem>
                         <NavItem>
                             <NavLink  to="/add"  style={{marginRight:'30px',textDecoration:'none'}}>New Question</NavLink>
-                        </NavItem>
-                        
+                        </NavItem>  
+                        <NavItem  style={{marginRight:'30px'}}>hi, {authedUser}</NavItem>                    
                         <NavItem>
                             <NavLink  to="#"
                              onClick={this.handleSignout}  style={{marginRight:'30px',textDecoration:'none'}}>Signout</NavLink>
@@ -54,9 +57,10 @@ class NavBar extends Component {
     }
 }
 
-function mapStateToProps({authedUser}) {
+function mapStateToProps({authedUser,users}) {
     return {
-       authedUser
+     user:users[authedUser],
+     authedUser
     }
 }
 
