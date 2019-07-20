@@ -16,7 +16,7 @@ class Question extends Component {
         dispatch(handleAnswerQuestion(question.id, vote))
        }
     render() {
-        const {question,user} = this.props
+        const {question} = this.props
         return (
             <Fragment>
               {question
@@ -24,7 +24,7 @@ class Question extends Component {
                     (<div>
                         <h1>Would you rather</h1>
                         <Row>                        
-                            <p>{question.author} Asks:</p>
+                            <h5>{question.author} Asks:</h5>
                         </Row>
                         <Row>
                             <Results questionId={question.id} optionName="optionOne" onClick={this.handleVote}/>

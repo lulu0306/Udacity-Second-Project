@@ -3,6 +3,7 @@ import {Table,Col,Row} from 'reactstrap'
 import {connect} from 'react-redux'
 import './GlobalStyle.css'
 
+
 class Resume extends React.Component {
     render() {
         const {user} = this.props
@@ -11,16 +12,16 @@ class Resume extends React.Component {
         return (
             <div className='tableContainer'>
             <Fragment>
-                <Row>
-             <Col md='12'>
+            <Row>
+            <Col md='12'>
             <Table>
             <thead>
                 <tr>
-                  <th>User</th>
-                  <th>Avatar</th>
-                  <th> Asked</th>
-                  <th>Answered</th>
-                  <th>Score</th>
+                    <th>User</th>
+                    <th>Avatar</th>
+                    <th> Asked</th>
+                    <th>Answered</th>
+                    <th>Score</th>
                 </tr>
             </thead>
                 <tbody>
@@ -31,7 +32,7 @@ class Resume extends React.Component {
                         <td>{numberOfAnswered}</td>
                         <td>{numberOfAnswered + numberOfAsked}</td>
                     </tr>
-            </tbody>  
+                </tbody>  
             </Table>
             </Col>
             </Row>
