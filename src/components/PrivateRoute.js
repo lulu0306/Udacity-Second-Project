@@ -5,7 +5,6 @@ import {Container, Row} from 'reactstrap'
 import NavBar from './NavBar'
 import {isEmpty} from '../utils/api'
 
-
 const PrivateRoute = ({component: Component, isSignedIn, ...rest}) => (
     <Route {...rest} render={(props) => {
         return (
@@ -22,7 +21,7 @@ const PrivateRoute = ({component: Component, isSignedIn, ...rest}) => (
                 : <Redirect to={{
                     pathname: '/login',
                     state: {from: props.location}
-                }}/>
+           }}/>
         )
     }}/>
 )
@@ -32,5 +31,4 @@ function mapStateToProps({authedUser}) {
         isSignedIn: !isEmpty(authedUser)
     }
 }
-
 export default connect(mapStateToProps, null, null, {pure: false,})(PrivateRoute)

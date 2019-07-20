@@ -14,7 +14,6 @@ class Login extends Component {
         e.preventDefault()
         const {username} = this.state
         const {dispatch} = this.props
-
         if (username !== "") {
             dispatch(setAuthedUser(username))
             this.setState(() => ({isLogged: true}))
@@ -24,16 +23,12 @@ class Login extends Component {
         const username = e.target.value
         this.setState(() => ({username}))
     }
-
     render() {
         const {from} = this.props.location.state || {from: {pathname: '/'}}
         const {isLogged} = this.state
-
         if (isLogged) {
             return <Redirect to={from}/>
         }
-
-
         return (
             <Form onSubmit={this.handleSubmit} className="form-signin" >
                 <img src='https://www.logolynx.com/images/logolynx/f9/f91405061e9668eb5a36dfffc74cdd79.png'  style={{  display: 'block',marginLeft: 'auto',marginRight: 'auto',width: '65%'}}/>
@@ -43,16 +38,12 @@ class Login extends Component {
                             value={this.state.username}
                             onChange={this.handleChange}>       
                         <option value='' disabled >Please Select</option>
-                        {this.props.users.map((user) => (
-                                
-                                <option key={user.id} value={user.id} >{user.name}</option>
-                            )
-                        )}
+                        {this.props.users.map((user) => (             
+                        <option key={user.id} value={user.id} >{user.name}</option>
+                        ))}
                     </select>
-
                 </FormGroup>
-                <Button type="submit" id="_submit" name="_submit"
-                        className="btn btn-lg btn-primary btn-block">Enter</Button>
+                <Button type="submit" id="_submit" name="_submit"className="btn btn-lg btn-primary btn-block">Enter</Button>
             </Form>
         )
     }
@@ -69,5 +60,4 @@ function mapStateToProps({users, authedUser}) {
         username: authedUser
     }
 }
-
 export default connect(mapStateToProps)(Login)

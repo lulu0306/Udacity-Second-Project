@@ -2,9 +2,8 @@ import React, {Component} from 'react'
 import {Button, Form, FormGroup, Input, Label} from 'reactstrap'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
-
-
 import {handleAddQuestion} from "../actions/questions"
+import './GlobalStyle.css'
 
 class NewQuestion extends Component {
     state = {
@@ -12,38 +11,30 @@ class NewQuestion extends Component {
         optionTwo: '',
         toDashboard: false
     }
-
     handleChange = (e) => {
         const {value, id} = e.target
         this.setState(() => ({[id]: value}))
     }
-
     handleSubmit = (e) => {
         e.preventDefault()
-
         const {optionOne, optionTwo} = this.state
         const {dispatch} = this.props
-
         dispatch(handleAddQuestion(optionOne, optionTwo))
-
         this.setState(() => ({
             optionOne: '',
             optionTwo: '',
             toDashboard: true
         }))
     }
-
     render() {
         const { toDashboard} = this.state
-
         if (toDashboard === true) {
             return <Redirect to='/'/>
         }
         return (
             <div>
                 <h1>Would You Rather...</h1>
-               
-                <Form onSubmit={this.handleSubmit} style={{backgroundColor:'aqua',padding:'10px',borderRadius:'5px'}}>
+                <Form onSubmit={this.handleSubmit} className="form">
                     <FormGroup>
                         <Label for="optionOne">Option One</Label>
                         <Input
@@ -61,11 +52,9 @@ class NewQuestion extends Component {
                             onChange={this.handleChange}/>
                     </FormGroup>
                     <Button  outline color='secondary'>Add Question</Button>
-                </Form>
-                
+                </Form>              
             </div>
         )
     }
 }
-
 export default connect()(NewQuestion)

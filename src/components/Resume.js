@@ -1,8 +1,7 @@
 import React,{Fragment} from 'react';
 import {Table,Col,Row} from 'reactstrap'
 import {connect} from 'react-redux'
-
-
+import './GlobalStyle.css'
 
 class Resume extends React.Component {
     render() {
@@ -27,11 +26,11 @@ class Resume extends React.Component {
                 <tbody>
                     <tr style={{backgroundColor:'aqua'}}>
                         <td>{user.name}</td>
-                        <td><img src={user.avatarURL} style={{height:'35px',margin:'10px'}}/></td>
+                        <td><img src={user.avatarURL}className="LeaderBoardImg"/></td>
                         <td>{numberOfAsked}</td>
                         <td>{numberOfAnswered}</td>
                         <td>{numberOfAnswered + numberOfAsked}</td>
-                </tr>
+                    </tr>
             </tbody>  
             </Table>
             </Col>
@@ -47,5 +46,4 @@ function mapStateToProps({users}, {id}) {
         user: users[id]
     }
 }
-
 export default connect(mapStateToProps)(Resume)

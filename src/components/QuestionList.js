@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {Card,Image} from 'reactstrap'
+import {Card} from 'reactstrap'
 
 class QuestionList extends Component {
-
     render() {
         const {question} = this.props
         const {id, optionOne, optionTwo,author} = question
@@ -19,15 +18,11 @@ class QuestionList extends Component {
            </div>
         )
     }
-
 }
 
-function mapStateToProps({questions,authedUser, users}, {id}) {
+function mapStateToProps({questions}, {id}) {
     return {
-        question: questions[id],
-     
+        question: questions[id],    
     }
-
 }
-
 export default connect(mapStateToProps)(QuestionList)
