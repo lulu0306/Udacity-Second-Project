@@ -16,7 +16,7 @@ class Resume extends React.Component {
              <Col md='12'>
             <Table>
             <thead>
-                <tr  style={{backgroundColor:'grey',color:'white'}} >
+                <tr>
                   <th>User</th>
                   <th>Avatar</th>
                   <th> Asked</th>

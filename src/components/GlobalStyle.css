@@ -1,0 +1,14 @@
+.selected-option{
+    background-color: aquamarine;
+}
+
+.tr{
+    background-color:grey;
+    color:white
+}
+
+.Error{
+  display: flex;
+  justify-content: center;
+   height: 100vh
+}

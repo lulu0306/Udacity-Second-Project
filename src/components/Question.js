@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import {Row} from 'reactstrap'
 import {handleAnswerQuestion} from '../actions/questions'
 import Results from "./Results"
+import ErrorMessage from './ErrorMessage'
+
 
 
 class Question extends Component {
@@ -16,11 +18,12 @@ class Question extends Component {
     }
 
     render() {
-        const {question} = this.props
+        const {question,user} = this.props
         return (
             <Fragment>
-              
-                    <div>
+              {question
+              ?
+                    (<div>
                         <h1>Would you rather</h1>
                         <Row>                        
                             <p>{question.author} Asks:</p>
@@ -29,8 +32,9 @@ class Question extends Component {
                             <Results questionId={question.id} optionName="optionOne" onClick={this.handleVote}/>
                             <Results questionId={question.id} optionName="optionTwo" onClick={this.handleVote}/>
                         </Row>
-                    </div>
-                   
+                    </div>)
+                : <ErrorMessage/>
+              }
             </Fragment>
         )
     }
@@ -44,7 +48,7 @@ function mapStateToProps({questions, users, authedUser}, props) {
     return {
         question,
         authedUser,
-        showResults: Object.keys(user.answers).includes(question_id)
+        showResults: Object.keys(user.answers).includes(question_id),
     }
 }
 
